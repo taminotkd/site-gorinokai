@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gorinokai - Academia de Aikido. O segredo do aikido é tornar-se um com o universo.">
+    <title>Gorinokai | Academia de Aikido</title>
+    
+    <!-- Preconnect para fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #b22e2f;
+            --color-primary-hover: #8f2526;
+            --color-bg-light: #f5f0e8;
+            --color-bg-medium: #e8e0d4;
+            --color-text-dark: #333333;
+            --color-text-medium: #666666;
+            --color-footer: #2a2a2a;
+            --font-heading: 'Noto Sans JP', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-light);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(245, 240, 232, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .header__logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .header__logo-placeholder {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .header__nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header__nav-link {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text-dark);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .header__nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+
+        .header__nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .header__nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .header__menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .header__menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: var(--color-text-dark);
+            transition: 0.3s ease;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 5% 80px;
+            background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-bg-medium) 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23b22e2f" stroke-width="0.5" opacity="0.12"/></svg>') center/400px repeat;
+            opacity: 0.3;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero__logo {
+            width: 500px;
+            height: auto;
+            margin: 0 auto 2rem;
+        }
+
+        .hero__logo-text {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .hero__subtitle {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--color-text-medium);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero__quote {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--color-text-dark);
+            margin-bottom: 3rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .hero__quote span {
+            display: block;
+            font-size: 1rem;
+            color: var(--color-text-medium);
+            margin-top: 0.5rem;
+            font-style: normal;
+        }
+
+        .hero__buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn--outline {
+            background-color: transparent;
+            color: var(--color-primary);
+        }
+
+        .btn--outline:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn--solid {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn--solid:hover {
+            background-color: var(--color-primary-hover);
+            border-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(178, 46, 47, 0.3);
+        }
+
+        /* ===== AIKIDO SECTION ===== */
+        .aikido {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .aikido__image {
+            position: relative;
+            overflow: hidden;
+            min-height: 500px; /* Altura mínima para garantir visibilidade */
+        }
+
+        .aikido__image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Mantém proporção e preenche o container */
+            object-position: center; /* Centraliza a imagem */
+        }
+
+        .aikido__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem;
+            background-color: var(--color-bg-light);
+        }
+
+        .aikido__title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .aikido__title span {
+            color: var(--color-primary);
+        }
+
+        .aikido__text {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--color-text-medium);
+            text-align: justify;
+        }
+
+        .aikido__text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .aikido__text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 1024px) {
+            .aikido {
+                grid-template-columns: 1fr;
+            }
+
+            .aikido__image {
+                min-height: 50vh;
+                max-height: 500px;
+            }
+
+            .aikido__content {
+                padding: 4rem 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .aikido__image {
+                min-height: 40vh;
+                max-height: 400px;
+            }
+
+            .aikido__title {
+                font-size: 1.8rem;
+            }
+
+            .aikido__content {
+                padding: 3rem 5%;
+            }
+
+            .aikido__text {
+                font-size: 1rem;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .aikido__image {
+                min-height: 35vh;
+                max-height: 300px;
+            }
+        }
+
+/* ===== SENSEIS SECTION ===== */
+.senseis {
+    padding: 6rem 5%;
+    background-color: var(--color-bg-medium);
+}
+
+.senseis__title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    text-align: center;
+    margin-bottom: 4rem;
+    letter-spacing: 0.05em;
+}
+
+.senseis__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.sensei-card {
+    text-align: center;
+}
+
+.sensei-card__image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    background-color: var(--color-bg-light);
+}
+
+.sensei-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sensei-card__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d4ccc0 0%, #c4bab0 100%);
+    color: var(--color-text-medium);
+    font-size: 0.8rem;
+}
+
+.sensei-card__name {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    letter-spacing: 0.02em;
+}
+
+.sensei-card__rank {
+    font-size: 0.85rem;
+    color: var(--color-text-medium);
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 1024px) {
+    .senseis__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+
+    .sensei-card__image {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+@media (max-width: 768px) {
+    .senseis {
+        padding: 4rem 5%;
+    }
+
+    .senseis__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+
+    .sensei-card__image {
+        width: 140px;
+        height: 140px;
+    }
+
+    .sensei-card__name {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .senseis__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .sensei-card__image {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+        /* ===== FOOTER / CONTATO ===== */
+        .footer {
+            background-color: var(--color-footer);
+            color: white;
+            padding: 4rem 5%;
+        }
+
+        .footer__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer__info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: var(--color-primary);
+        }
+
+        .footer__contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer__contact-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .footer__contact-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .footer__contact-text a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer__contact-text a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer__map {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .footer__map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .footer__map-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: #3a3a3a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 1024px) {
+            .aikido {
+                grid-template-columns: 1fr;
+            }
+
+            .aikido__image {
+                min-height: 50vh;
+            }
+
+            .aikido__content {
+                padding: 4rem 5%;
+            }
+
+            .senseis__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Header Mobile */
+            .header__nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--color-bg-light);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .header__nav.active {
+                right: 0;
+            }
+
+            .header__nav-link {
+                font-size: 1.1rem;
+            }
+
+            .header__menu-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .header__menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .header__menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .header__menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            /* Hero Mobile */
+            .hero {
+                padding: 100px 5% 60px;
+                min-height: auto;
+            }
+
+            .hero__logo-text {
+                font-size: 2.5rem;
+            }
+
+            .hero__quote {
+                font-size: 1.2rem;
+            }
+
+            .hero__buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            /* Aikido Mobile */
+            .aikido__title {
+                font-size: 1.8rem;
+            }
+
+            .aikido__content {
+                padding: 3rem 5%;
+            }
+
+            .aikido__text {
+                font-size: 1rem;
+                text-align: left;
+            }
+
+            /* Senseis Mobile */
+            .senseis {
+                padding: 4rem 5%;
+            }
+
+            .senseis__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .sensei-card__image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .sensei-card__name {
+                font-size: 0.9rem;
+            }
+
+            /* Footer Mobile */
+            .footer__container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer__map {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero__logo-text {
+                font-size: 2rem;
+            }
+
+            .hero__quote {
+                font-size: 1rem;
+            }
+
+            .senseis__grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .sensei-card__image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Scroll Reveal Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== AVALIAÇÕES SECTION ===== */
+        .avaliacoes {
+            padding: 6rem 5%;
+            background-color: var(--color-bg-light);
+        }
+
+        .avaliacoes__title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--color-text-dark);
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .avaliacoes__subtitle {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-text-medium);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .avaliacoes__stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .avaliacoes__rating-big {
+            text-align: center;
+        }
+
+        .avaliacoes__rating-number {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            line-height: 1;
+        }
+
+        .avaliacoes__rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin: 0.5rem 0;
+        }
+
+        .avaliacoes__rating-count {
+            font-size: 0.9rem;
+            color: var(--color-text-medium);
+        }
+
+        /* Estrelas */
+        .star {
+            width: 24px;
+            height: 24px;
+            fill: #d4d4d4;
+            transition: fill 0.3s ease;
+        }
+
+        .star--filled {
+            fill: #f5a623;
+        }
+
+        .star--half {
+            fill: url(#half-star-gradient);
+        }
+
+        .star--small {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Grid de Avaliações - 4 Cards */
+        .avaliacoes__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Card de Avaliação */
+        .avaliacao-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.75rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .avaliacao-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .avaliacao-card__quote-icon {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 28px;
+            height: 28px;
+            fill: var(--color-bg-medium);
+            opacity: 0.5;
+        }
+
+        .avaliacao-card__header {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .avaliacao-card__avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--color-bg-medium);
+            flex-shrink: 0;
+        }
+
+        .avaliacao-card__avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avaliacao-card__avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #d44a4b 100%);
+            color: white;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .avaliacao-card__info {
+            flex: 1;
+        }
+
+        .avaliacao-card__name {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .avaliacao-card__date {
+            font-size: 0.75rem;
+            color: var(--color-text-medium);
+        }
+
+        .avaliacao-card__stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .avaliacao-card__text {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--color-text-medium);
+            font-style: italic;
+        }
+
+        .avaliacao-card__verified {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: #27ae60;
+        }
+
+        .avaliacao-card__verified-icon {
+            width: 14px;
+            height: 14px;
+            fill: #27ae60;
+        }
+
+        /* CTA de Avaliação */
+        .avaliacoes__cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .avaliacoes__cta-text {
+            font-size: 1rem;
+            color: var(--color-text-medium);
+            margin-bottom: 1rem;
+        }
+
+        .avaliacoes__cta .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .avaliacoes__cta .btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* ===== RESPONSIVO AVALIAÇÕES ===== */
+        @media (max-width: 1024px) {
+            .avaliacoes__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .avaliacoes {
+                padding: 4rem 5%;
+            }
+
+            .avaliacoes__grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .avaliacoes__rating-number {
+                font-size: 3rem;
+            }
+
+            .avaliacao-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .avaliacoes__stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* ===== GALERIA SECTION ===== */
+.galeria {
+    padding: 6rem 5%;
+    background-color: var(--color-bg-light);
+}
+
+.galeria__title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    text-align: center;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.galeria__subtitle {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-medium);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Grid Masonry */
+.galeria__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 200px;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.galeria__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.galeria__item--tall {
+    grid-row: span 2;
+}
+
+.galeria__item--wide {
+    grid-column: span 2;
+}
+
+.galeria__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.galeria__item:hover img {
+    transform: scale(1.1);
+}
+
+/* Overlay */
+.galeria__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.galeria__item:hover .galeria__overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.galeria__icon {
+    width: 40px;
+    height: 40px;
+    fill: white;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.galeria__item:hover .galeria__icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox__img {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.lightbox.active .lightbox__img {
+    transform: scale(1);
+}
+
+.lightbox__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.lightbox__close:hover {
+    transform: rotate(90deg);
+}
+
+.lightbox__close svg {
+    width: 100%;
+    height: 100%;
+    fill: white;
+}
+
+.lightbox__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.lightbox__btn:hover {
+    background-color: var(--color-primary);
+}
+
+.lightbox__btn svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+.lightbox__btn--prev {
+    left: 20px;
+}
+
+.lightbox__btn--next {
+    right: 20px;
+}
+
+/* ===== GALERIA RESPONSIVO ===== */
+@media (max-width: 1024px) {
+    .galeria {
+        padding: 5rem 5%;
+    }
+
+    .galeria__grid {
+        grid-auto-rows: 180px;
+        gap: 0.875rem;
+    }
+
+    .galeria__title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .galeria {
+        padding: 4rem 5%;
+    }
+
+    .galeria__grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 160px;
+        gap: 0.75rem;
+    }
+
+    .galeria__item--wide {
+        grid-column: span 2;
+    }
+
+    .galeria__item--tall {
+        grid-row: span 2;
+    }
+
+    .galeria__title {
+        font-size: 1.5rem;
+    }
+
+    .galeria__subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .lightbox__btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .lightbox__btn svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .lightbox__btn--prev {
+        left: 10px;
+    }
+
+    .lightbox__btn--next {
+        right: 10px;
+    }
+
+    .lightbox__close {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .galeria {
+        padding: 3rem 4%;
+    }
+
+    .galeria__grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 140px;
+        gap: 0.5rem;
+    }
+
+    .galeria__item {
+        border-radius: 6px;
+    }
+
+    .galeria__item--tall {
+        grid-row: span 2;
+    }
+
+    .galeria__item--wide {
+        grid-column: span 2;
+    }
+
+    .galeria__icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .galeria__title {
+        font-size: 1.35rem;
+    }
+
+    .galeria__subtitle {
+        font-size: 0.85rem;
+    }
+
+    .lightbox__img {
+        max-width: 95%;
+        max-height: 80vh;
+    }
+}
+    </style>
+
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="#" class="header__logo-placeholder">五輪会</a>
+        
+        <nav class="header__nav" id="nav">
+            <a href="#aikido" class="header__nav-link">O Aikido</a>
+            <a href="#senseis" class="header__nav-link">Senseis</a>
+            <a href="#contato" class="header__nav-link">Contato</a>
+        </nav>
+
+        <button class="header__menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero__content">
+            <img 
+            src="./imagens/Logo Go Rin no Kai_Color.png"
+            alt="Prática de Aikido na Gorinokai"
+            loading="lazy"
+            class="hero__logo">
+            <p class="hero__subtitle">Academia de Aikido</p>
+            <h1 class="hero__logo-text">Go Rin No Kai</h1>
+            
+            <blockquote class="hero__quote">
+                "O segredo do aikido é tornar-se um com o universo"
+                <span>— Morihei Ueshiba, O'Sensei</span>
+            </blockquote>
+
+            <div class="hero__buttons">
+                <a href="#aikido" class="btn btn--outline">Conheça o Aikido</a>
+                <a href="https://wa.me/5511989220171?text=Olá! Gostaria de agendar uma aula experimental de Aikido." 
+                   class="btn btn--solid" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    Agende sua aula experimental
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AIKIDO SECTION -->
+    <section class="aikido" id="aikido">
+        <div class="aikido__image">
+            <img 
+                src="./imagens/aikido-pratica.jpg"
+                alt="Prática de Aikido na Gorinokai"
+                loading="lazy"
+            >
+        </div>
+
+        <div class="aikido__content">
+            <h2 class="aikido__title">O que é Aikido <span>(合氣道)</span>?</h2>
+            
+            <div class="aikido__text">
+                <p>
+                    O Aikido é uma arte marcial japonesa moderna, desenvolvida por Morihei Ueshiba 
+                    (1883-1969), conhecido como O'Sensei. Seu nome pode ser traduzido como 
+                    "O Caminho da Harmonia com a Energia Universal" — onde <strong>Ai</strong> (合) 
+                    significa harmonia, <strong>Ki</strong> (氣) representa a energia vital, 
+                    e <strong>Do</strong> (道) é o caminho ou via.
+                </p>
+                
+                <p>
+                    Diferente de outras artes marciais, o Aikido não busca a confrontação ou a 
+                    destruição do oponente. Sua essência reside em neutralizar a agressão de forma 
+                    harmoniosa, redirecionando a energia do ataque. Os movimentos são circulares e 
+                    fluidos, utilizando a força do próprio atacante para conduzi-lo a uma posição 
+                    de controle.
+                </p>
+                
+                <p>
+                    A prática do Aikido desenvolve não apenas habilidades físicas — como equilíbrio, 
+                    coordenação e flexibilidade — mas também promove o crescimento pessoal, 
+                    a disciplina mental e a busca pela paz interior. É uma arte que pode ser 
+                    praticada por pessoas de todas as idades e condições físicas.
+                </p>
+                
+                <p>
+                    Na Gorinokai, preservamos os ensinamentos tradicionais do Aikido, oferecendo 
+                    um ambiente acolhedor para iniciantes e praticantes avançados desenvolverem 
+                    seu caminho marcial.
+                </p>
+            </div>
+        </div>
+    </section>
+
+<!-- SENSEIS SECTION -->
+<section class="senseis" id="senseis">
+    <h2 class="senseis__title">Nossos Senseis</h2>
+    
+    <div class="senseis__grid">
+        <!-- Sensei 1 -->
+        <article class="sensei-card">
+            <div class="sensei-card__image">
+                <img src="./imagens/foto-dieter.jpg" alt="Sensei Tanaka Hiroshi" loading="lazy">
+            </div>
+            <h3 class="sensei-card__name">Dieter Martens</h3>
+            <p class="sensei-card__rank">3º Dan</p>
+        </article>
+
+        <!-- Sensei 2 -->
+        <article class="sensei-card">
+            <div class="sensei-card__image">
+                <div class="sensei-card__image-placeholder">
+                    <img src="./imagens/foto-alessandra.jpg" alt="Sensei Tanaka Hiroshi" loading="lazy">
+                </div>
+            </div>
+            <h3 class="sensei-card__name">Alessandra</h3>
+            <p class="sensei-card__rank">2º Dan</p>
+        </article>
+
+        <!-- Sensei 3 -->
+        <article class="sensei-card">
+            <div class="sensei-card__image">
+                <div class="sensei-card__image-placeholder">
+                    <img src="./imagens/foto-andre.jpg" alt="Sensei Tanaka Hiroshi" loading="lazy">
+                </div>
+            </div>
+            <h3 class="sensei-card__name">André</h3>
+            <p class="sensei-card__rank">4º Dan</p>
+        </article>
+
+        <!-- Sensei 4 -->
+        <article class="sensei-card">
+            <div class="sensei-card__image">
+                <div class="sensei-card__image-placeholder">
+                    <img src="./imagens/foto-nivaldo.jpg" alt="Sensei Tanaka Hiroshi" loading="lazy">
+                </div>
+            </div>
+            <h3 class="sensei-card__name">Nivaldo</h3>
+            <p class="sensei-card__rank">4º Dan</p>
+        </article>
+    </div>
+</section>
+
+
+    <!-- AVALIAÇÕES SECTION -->
+    <section class="avaliacoes" id="avaliacoes">
+        <h2 class="avaliacoes__title">O que dizem nossos alunos</h2>
+        <p class="avaliacoes__subtitle">Depoimentos de quem pratica Aikido na Gorinokai</p>
+
+        <div class="avaliacoes__stats">
+            <div class="avaliacoes__rating-big">
+                <span class="avaliacoes__rating-number">4.9</span>
+                <div class="avaliacoes__rating-stars">
+                    <!-- SVG Gradient para meia estrela -->
+                    <svg width="0" height="0" style="position: absolute;">
+                        <defs>
+                            <linearGradient id="half-star-gradient">
+                                <stop offset="50%" stop-color="#f5a623"/>
+                                <stop offset="50%" stop-color="#d4d4d4"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    
+                    <svg class="star star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--half" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                </div>
+                <span class="avaliacoes__rating-count">Baseado em 127 avaliações</span>
+            </div>
+        </div>
+
+        <div class="avaliacoes__grid">
+            
+            <article class="avaliacao-card">
+                <svg class="avaliacao-card__quote-icon" viewBox="0 0 24 24">
+                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                </svg>
+                
+                <div class="avaliacao-card__header">
+                    <div class="avaliacao-card__avatar">
+                        <div class="avaliacao-card__avatar-placeholder">RM</div>
+                    </div>
+                    <div class="avaliacao-card__info">
+                        <h3 class="avaliacao-card__name">Ricardo Mendes</h3>
+                        <span class="avaliacao-card__date">Há 2 semanas</span>
+                    </div>
+                </div>
+                
+                <div class="avaliacao-card__stars">
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                </div>
+                
+                <p class="avaliacao-card__text">
+                    "Comecei a praticar há 6 meses e foi uma das melhores decisões da minha vida. Os senseis são dedicados e pacientes. Ambiente acolhedor para iniciantes."
+                </p>
+                
+                <div class="avaliacao-card__verified">
+                    <svg class="avaliacao-card__verified-icon" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    <span>Aluno verificado</span>
+                </div>
+            </article>
+
+            <article class="avaliacao-card">
+                <svg class="avaliacao-card__quote-icon" viewBox="0 0 24 24">
+                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                </svg>
+                
+                <div class="avaliacao-card__header">
+                    <div class="avaliacao-card__avatar">
+                        <div class="avaliacao-card__avatar-placeholder">AS</div>
+                    </div>
+                    <div class="avaliacao-card__info">
+                        <h3 class="avaliacao-card__name">Ana Silva</h3>
+                        <span class="avaliacao-card__date">Há 1 mês</span>
+                    </div>
+                </div>
+                <div class="avaliacao-card__stars">
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                </div>
+                
+                <p class="avaliacao-card__text">
+                    "Procurava uma atividade que trabalhasse corpo e mente. No Aikido encontrei isso e muito mais. A filosofia por trás da arte é transformadora!"
+                </p>
+                
+                <div class="avaliacao-card__verified">
+                    <svg class="avaliacao-card__verified-icon" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    <span>Aluna verificada</span>
+                </div>
+            </article>
+
+            <article class="avaliacao-card">
+                <svg class="avaliacao-card__quote-icon" viewBox="0 0 24 24">
+                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                </svg>
+                
+                <div class="avaliacao-card__header">
+                    <div class="avaliacao-card__avatar">
+                        <div class="avaliacao-card__avatar-placeholder">CT</div>
+                    </div>
+                    <div class="avaliacao-card__info">
+                        <h3 class="avaliacao-card__name">Carlos Tanaka</h3>
+                        <span class="avaliacao-card__date">Há 1 mês</span>
+                    </div>
+                </div>
+                
+                <div class="avaliacao-card__stars">
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                </div>
+                
+                <p class="avaliacao-card__text">
+                    "Treino há 3 anos e a evolução técnica e pessoal é notável. Os senseis têm conhecimento profundo e o dojo tem uma energia única. Recomendo!"
+                </p>
+                
+                <div class="avaliacao-card__verified">
+                    <svg class="avaliacao-card__verified-icon" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    <span>Aluno verificado</span>
+                </div>
+            </article>
+
+            <article class="avaliacao-card">
+                <svg class="avaliacao-card__quote-icon" viewBox="0 0 24 24">
+                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                </svg>
+                
+                <div class="avaliacao-card__header">
+                    <div class="avaliacao-card__avatar">
+                        <div class="avaliacao-card__avatar-placeholder">MF</div>
+                    </div>
+                    <div class="avaliacao-card__info">
+                        <h3 class="avaliacao-card__name">Mariana Ferreira</h3>
+                        <span class="avaliacao-card__date">Há 2 meses</span>
+                    </div>
+                </div>
+                
+                <div class="avaliacao-card__stars">
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star star--small star--filled" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                </div>
+                
+                <p class="avaliacao-card__text">
+                    "Levei meu filho de 10 anos e hoje treinamos juntos. O trabalho com crianças é excepcional, desenvolvendo disciplina de forma lúdica. Ambiente familiar!"
+                </p>
+                
+                <div class="avaliacao-card__verified">
+                    <svg class="avaliacao-card__verified-icon" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    <span>Aluna verificada</span>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="avaliacoes__cta">
+            <p class="avaliacoes__cta-text">Já treina conosco? Compartilhe sua experiência!</p>
+            <a href="https://g.page/r/SEU-LINK-GOOGLE/review" 
+            class="btn btn--outline" 
+            target="_blank" 
+            rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                Deixar uma avaliação
+            </a>
+        </div>
+
+    </section>
+
+    <!-- GALERIA SECTION -->
+    <section class="galeria" id="galeria">
+        <h2 class="galeria__title">Nossa Academia</h2>
+        <p class="galeria__subtitle">Momentos da prática do Aikido na Gorinokai</p>
+        
+        <div class="galeria__grid">
+            <div class="galeria__item galeria__item--tall">
+                <img src="./imagens/foto-com-herbert.jpg" alt="Treino de Aikido" loading="lazy">
+                <div class="galeria__overlay">
+                    <svg class="galeria__icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="galeria__item">
+                <img src="./imagens/foto-exame-2.JPG" alt="Prática de técnicas" loading="lazy">
+                <div class="galeria__overlay">
+                    <svg class="galeria__icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="galeria__item">
+                <img src="./imagens/foto-treino.JPG" alt="Graduação" loading="lazy">
+                <div class="galeria__overlay">
+                    <svg class="galeria__icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="galeria__item galeria__item--wide">
+                <img src="./imagens/foto-seminario.JPG" alt="Dojo Gorinokai" loading="lazy">
+                <div class="galeria__overlay">
+                    <svg class="galeria__icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="galeria__item galeria__item--tall">
+                <img src="./imagens/foto-aula-crianca-2.jpg" alt="Aula em grupo" loading="lazy">
+                <div class="galeria__overlay">
+                    <svg class="galeria__icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="galeria__item">
+                <img src="./imagens/foto-exame-de-faixa.jpg" alt="Cerimônia tradicional" loading="lazy">
+                <div class="galeria__overlay">
+                    <svg class="galeria__icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="galeria__item">
+                <img src="./imagens/foto-academia-unida.JPG" alt="Prática de Bokken" loading="lazy">
+                <div class="galeria__overlay">
+                    <svg class="galeria__icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="galeria__item galeria__item--wide">
+                <img src="./imagens/foto-aula-com-pais.JPG" alt="Seminário de Aikido" loading="lazy">
+                <div class="galeria__overlay">
+                    <svg class="galeria__icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                    </svg>
+                </div>
+            </div>
+            
+
+        </div>
+        
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox__close" id="lightboxClose" aria-label="Fechar">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+            <button class="lightbox__btn lightbox__btn--prev" id="lightboxPrev" aria-label="Anterior">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+            </button>
+            <button class="lightbox__btn lightbox__btn--next" id="lightboxNext" aria-label="Próximo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+                </svg>
+            </button>
+            <img class="lightbox__img" id="lightboxImg" src="" alt="">
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTATO -->
+    <footer class="footer" id="contato">
+        <div class="footer__container">
+            <div class="footer__info">
+                <h3>Contato</h3>
+                
+                <div class="footer__contact-item">
+                    <svg class="footer__contact-icon" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    <div class="footer__contact-text">
+                        <a href="tel:+5511989220171"> (11) 98922-0171</a>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <svg class="footer__contact-icon" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <div class="footer__contact-text">
+                        <a href="mailto:contato@gorinokai.com.br">contato@gorinokai.com.br</a>
+                    </div>
+                </div>
+
+                <div class="footer__contact-item">
+                    <svg class="footer__contact-icon" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <div class="footer__contact-text">
+                        Rua das Artes Marciais, 123<br>
+                        Bairro Harmonia - São Paulo/SP<br>
+                        CEP: 01234-567
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__map">
+                <!-- Substitua pelo embed real do Google Maps -->
+                <div class="footer__map-placeholder">
+                  
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.8983742!2d-46.7180303!3d-23.5883037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce573e1a5861c1%3A0x4e98d6e061cbfd2b!2sGo%20Rin%20no%20Kai%20Dojo!5e0!3m2!1spt-BR!2sbr!4v1706400000000!5m2!1spt-BR!2sbr"
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+    
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>&copy; 2024 Gorinokai - Academia de Aikido. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ===== MOBILE MENU TOGGLE =====
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('.header__nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+
+        // ===== SMOOTH SCROLL PARA LINKS ÂNCORA =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ===== HEADER SCROLL EFFECT =====
+        const header = document.querySelector('.header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            // Adiciona sombra após scroll
+            if (currentScrollY > 50) {
+                header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+        
+        // ===== SCROLL REVEAL ANIMATION =====
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // ===== INTERSECTION OBSERVER PARA ANIMAÇÕES =====
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos específicos
+        document.querySelectorAll('.sensei-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        document.querySelectorAll('.aikido__content, .aikido__image').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ===== LAZY LOADING PARA IMAGENS =====
+        if ('loading' in HTMLImageElement.prototype) {
+            // Browser suporta lazy loading nativo - não precisa fazer nada
+            console.log('Lazy loading nativo suportado');
+        } else {
+            // Fallback para browsers antigos
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            const lazyImageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const lazyImage = entry.target;
+                        if (lazyImage.dataset.src) {
+                            lazyImage.src = lazyImage.dataset.src;
+                        }
+                        lazyImage.classList.remove('lazy');
+                        lazyImageObserver.unobserve(lazyImage);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => {
+                lazyImageObserver.observe(img);
+            });
+        }
+
+        // ===== ACTIVE NAV LINK ON SCROLL =====
+        const sections = document.querySelectorAll('section[id]');
+
+        const highlightNavLink = () => {
+            const scrollY = window.scrollY;
+            
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('.header__nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        };
+
+        window.addEventListener('scroll', highlightNavLink);
+
+        // ===== PRELOADER (OPCIONAL) =====
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            
+            // Animação inicial dos elementos do hero
+            const heroElements = document.querySelectorAll('.hero__content > *');
+            heroElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+
+        // ===== PREVENÇÃO DE FLASH DE CONTEÚDO =====
+        document.documentElement.style.visibility = 'visible';
+        // ===== LIGHTBOX DA GALERIA =====
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+const lightboxPrev = document.getElementById('lightboxPrev');
+const lightboxNext = document.getElementById('lightboxNext');
+const galeriaItems = document.querySelectorAll('.galeria__item');
+
+let currentImageIndex = 0;
+const images = [];
+
+// Coleta todas as imagens da galeria
+galeriaItems.forEach((item, index) => {
+    const img = item.querySelector('img');
+    images.push({
+        src: img.src,
+        alt: img.alt
+    });
+    
+    // Abre lightbox ao clicar
+    item.addEventListener('click', () => {
+        currentImageIndex = index;
+        openLightbox();
+    });
+});
+
+// Abre o lightbox
+function openLightbox() {
+    lightboxImg.src = images[currentImageIndex].src;
+    lightboxImg.alt = images[currentImageIndex].alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Fecha o lightbox
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Próxima imagem
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    lightboxImg.src = images[currentImageIndex].src;
+    lightboxImg.alt = images[currentImageIndex].alt;
+}
+
+// Imagem anterior
+function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentImageIndex].src;
+    lightboxImg.alt = images[currentImageIndex].alt;
+}
+
+// Event Listeners
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxNext.addEventListener('click', nextImage);
+lightboxPrev.addEventListener('click', prevImage);
+
+// Fecha ao clicar fora da imagem
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        closeLightbox();
+    }
+});
+
+// Navegação por teclado
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    
+    switch (e.key) {
+        case 'Escape':
+            closeLightbox();
+            break;
+        case 'ArrowRight':
+            nextImage();
+            break;
+        case 'ArrowLeft':
+            prevImage();
+            break;
+    }
+});
+
+// Suporte a swipe no mobile
+let lightboxTouchStartX = 0;
+let lightboxTouchEndX = 0;
+
+lightbox.addEventListener('touchstart', (e) => {
+    lightboxTouchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+lightbox.addEventListener('touchend', (e) => {
+    lightboxTouchEndX = e.changedTouches[0].screenX;
+    handleLightboxSwipe();
+}, { passive: true });
+
+function handleLightboxSwipe() {
+    const swipeThreshold = 50;
+    const diff = lightboxTouchStartX - lightboxTouchEndX;
+    
+    if (diff > swipeThreshold) {
+        nextImage();
+    } else if (diff < -swipeThreshold) {
+        prevImage();
+    }
+}
+    </script>
+
+</body>
+</html>
